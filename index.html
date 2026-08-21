@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de boda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF7EF;
+    --ivory-deep:#F1E9D6;
+    --forest:#26352A;
+    --forest-mid:#5C6E4E;
+    --gold:#B08A3E;
+    --gold-light:#D8BE86;
+    --ink:#3A2E22;
+    --max:480px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory-deep);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:480px;margin:0 auto;
+    background:var(--ivory);
+    box-shadow:0 0 60px rgba(38,53,42,0.14);
+    overflow:hidden;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 1.75rem;}
+
+  /* photos */
+  .photo-full{width:100%;aspect-ratio:3/4;overflow:hidden;border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light);}
+  .photo-full img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-caption{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    text-align:center;font-size:1.05rem;color:var(--forest-mid);
+    padding:1.4rem 2rem 0;
+  }
+  .photo-pair{
+    padding:4rem 2rem 3.5rem;
+    display:flex;flex-direction:column;gap:3rem;
+    align-items:center;background:var(--ivory);
+  }
+  .photo-card{
+    width:78%;max-width:280px;
+    background:var(--ivory);padding:10px 10px 22px;
+    box-shadow:0 6px 18px rgba(58,46,34,0.16);
+    border:1px solid var(--gold-light);
+  }
+  .photo-card img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;}
+  .photo-card.tilt-left{transform:rotate(-3deg);align-self:flex-start;margin-left:4%;}
+  .photo-card.tilt-right{transform:rotate(3deg);align-self:flex-end;margin-right:4%;}
+  .photo-card .cap{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:0.9rem;color:var(--forest-mid);text-align:center;margin-top:0.55rem;
+  }
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-size:14px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--forest-mid);
+    text-align:center;
+    margin:0 0 0.5rem;
+  }
+  .rule{
+    width:56px;height:1px;background:var(--gold);
+    margin:1.1rem auto;border:none;
+  }
+  /* cord signature element */
+  .cord{width:100%;max-width:420px;margin:1.6rem auto;opacity:0;transform:translateY(6px);transition:opacity .9s ease, transform .9s ease;}
+  .cord.small{max-width:220px;margin:1.2rem auto;}
+  .cord.in-view{opacity:1;transform:translateY(0);}
+  .cord path{
+    fill:none;stroke-width:2;stroke-linecap:round;
+    stroke-dasharray:900;stroke-dashoffset:900;
+    transition:stroke-dashoffset 1.6s ease;
+  }
+  .cord.in-view path{stroke-dashoffset:0;}
+  .cord path.a{stroke:var(--gold);}
+  .cord path.b{stroke:var(--forest-mid);}
+  .cord path.c{stroke:var(--ink);opacity:.55;}
+
+  /* hero */
+  .hero{
+    min-height:92vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:4rem 1.75rem 3rem;
+    background:
+      linear-gradient(var(--ivory),var(--ivory));
+    border-bottom:1px solid var(--ivory-deep);
+  }
+  .names{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-size:clamp(2.4rem, 8vw, 4.4rem);
+    line-height:1.15;
+    margin:0.3rem 0 0.6rem;
+    color:var(--forest);
+  }
+  .names .amp{
+    display:block;
+    font-style:italic;
+    font-weight:400;
+    font-size:0.55em;
+    color:var(--gold);
+    margin:0.15em 0;
+  }
+  .date{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    letter-spacing:0.08em;
+    color:var(--forest-mid);
+    margin:0.2rem 0 0;
+  }
+  .scroll-cue{
+    margin-top:2.6rem;
+    background:none;border:none;cursor:pointer;
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--forest-mid);
+    letter-spacing:0.03em;
+    padding:0.5rem 0.25rem;
+  }
+  .scroll-cue:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* verse */
+  .verse{padding:4.5rem 1.75rem;text-align:center;background:var(--ivory-deep);}
+  .verse blockquote{
+    max-width:560px;margin:0 auto;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;font-weight:400;
+    font-size:clamp(1.25rem,3.4vw,1.6rem);
+    line-height:1.55;color:var(--forest);
+  }
+  .verse .citation{
+    margin-top:1.1rem;font-size:0.95rem;
+    letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* details */
+  .details{
+    padding:4.5rem 1.75rem;
+    max-width:var(--max);margin:0 auto;
+    display:flex;flex-direction:column;gap:2.75rem;
+    align-items:center;text-align:center;
+  }
+  .detail-divider{width:56px;height:1px;background:var(--ivory-deep);margin:0 auto;}
+  .detail-label{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--gold);margin:0 0 0.9rem;
+  }
+  .detail-time{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.9rem;font-weight:500;color:var(--forest);margin:0 0 0.4rem;
+  }
+  .detail-place{font-size:1.05rem;margin:0;line-height:1.5;}
+  .detail-place-sub{font-size:1.05rem;margin:0.1rem 0 0;line-height:1.5;color:var(--forest-mid);}
+  .map-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    margin-top:0.9rem;
+    font-family:'Cormorant Garamond', serif;
+    font-size:0.92rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--gold);text-decoration:none;
+    border:1px solid var(--gold-light);
+    padding:0.45rem 1rem;border-radius:20px;
+  }
+  .map-btn:hover{background:var(--gold-light);color:var(--ink);}
+  .map-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .map-btn svg{width:14px;height:14px;flex-shrink:0;}
+
+  .note{padding:0 1.75rem 3.5rem;max-width:560px;margin:0 auto;text-align:center;}
+  .note p{font-size:1.02rem;color:var(--forest-mid);font-style:italic;margin:0;}
+
+  /* dresscode */
+  .dresscode{padding:4rem 1.75rem 4.5rem;background:var(--ivory-deep);text-align:center;}
+  .dresscode h2{
+    font-family:'Cormorant Garamond', serif;font-weight:500;
+    font-size:clamp(1.7rem,4vw,2.2rem);color:var(--forest);margin:0.2rem 0 2.2rem;
+    text-transform:capitalize;
+  }
+  .dress-cards{
+    max-width:var(--max);margin:0 auto;
+    display:flex;flex-direction:column;gap:1.5rem;
+  }
+  .dress-card{
+    background:var(--ivory);border:1px solid var(--gold-light);
+    padding:1.8rem 1.4rem;
+  }
+  .dress-label{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.05rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--forest-mid);margin:0 0 0.6rem;
+  }
+  .dress-card p.editable{font-size:1.02rem;margin:0;line-height:1.5;}
+
+  /* rsvp */
+  .rsvp{padding:4.5rem 1.75rem 5rem;max-width:560px;margin:0 auto;text-align:center;}
+  .rsvp-sub{font-size:1.02rem;color:var(--forest-mid);margin:0 0 2.2rem;line-height:1.5;}
+  #rsvp-form{display:flex;flex-direction:column;gap:1.1rem;text-align:left;}
+  #rsvp-form label{
+    display:flex;flex-direction:column;gap:0.4rem;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1rem;letter-spacing:0.03em;color:var(--forest);
+  }
+  #rsvp-form input,#rsvp-form select,#rsvp-form textarea{
+    font-family:'EB Garamond', serif;font-size:1rem;
+    padding:0.65rem 0.75rem;border:1px solid var(--gold-light);
+    background:var(--ivory);color:var(--ink);border-radius:2px;
+    resize:vertical;
+  }
+  #rsvp-form input:focus-visible,#rsvp-form select:focus-visible,#rsvp-form textarea:focus-visible,#rsvp-form button:focus-visible{
+    outline:2px solid var(--gold);outline-offset:2px;
+  }
+  #rsvp-form button{
+    margin-top:0.5rem;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.05rem;letter-spacing:0.08em;text-transform:uppercase;
+    background:var(--forest);color:var(--ivory);border:none;
+    padding:0.85rem 1rem;cursor:pointer;transition:background .25s ease;
+  }
+  #rsvp-form button:hover{background:var(--forest-mid);}
+  .field-error{color:#9A3B2E;font-size:0.85rem;font-family:'EB Garamond',serif;display:none;margin-top:0.15rem;}
+  .field-error.show{display:block;}
+  .rsvp-thanks{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:1.2rem;color:var(--forest);margin-top:1.6rem;
+  }
+  .rsvp-count{font-size:0.9rem;color:var(--forest-mid);margin-top:1.4rem;}
+  .form-embed{
+    max-width:640px;margin:0 auto;
+    background:var(--ivory-deep);
+    border:1px solid var(--gold-light);
+    padding:0.75rem;
+    border-radius:2px;
+  }
+  .form-embed iframe{
+    width:100%;
+    min-height:660px;
+    border:none;
+    display:block;
+    background:var(--ivory);
+  }
+  @media (max-width:520px){
+    .form-embed iframe{min-height:820px;}
+  }
+
+  /* regalos */
+  .gift{padding:4.5rem 1.75rem;text-align:center;background:var(--ivory-deep);}
+  .gift-text{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    font-size:1.08rem;line-height:1.65;color:var(--forest);
+    max-width:480px;margin:0 auto 2.2rem;
+  }
+  .gift-card{
+    max-width:var(--max);margin:0 auto;
+    background:var(--ivory);border:1px solid var(--gold-light);
+    padding:1.8rem 1.4rem;
+  }
+  .gift-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;color:var(--forest);margin:0 0 0.5rem;
+  }
+  .gift-account{
+    display:flex;align-items:center;justify-content:center;gap:0.7rem;flex-wrap:wrap;
+    font-size:1.2rem;letter-spacing:0.1em;color:var(--forest-mid);
+  }
+  .gift-copy{
+    font-family:'EB Garamond', serif;font-size:0.85rem;
+    background:none;border:1px solid var(--gold-light);color:var(--gold);
+    padding:0.3rem 0.75rem;border-radius:14px;cursor:pointer;
+  }
+  .gift-copy:hover{background:var(--gold-light);color:var(--ink);}
+  .gift-copy:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .gift-copied{font-size:0.85rem;color:var(--forest-mid);margin-top:0.8rem;display:none;}
+  .gift-copied.show{display:block;}
+
+  /* footer */
+  .footer{padding:4rem 1.75rem 3.5rem;text-align:center;background:var(--ivory);}
+  .footer-names{
+    font-family:'Cormorant Garamond', serif;font-size:1.5rem;color:var(--forest);margin:0.3rem 0 0.2rem;
+  }
+  .footer-date{font-size:0.95rem;color:var(--forest-mid);margin:0;letter-spacing:0.06em;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    .cord,.cord path,.reveal{transition:none !important;}
+    .cord{opacity:1;transform:none;}
+    .cord path{stroke-dashoffset:0;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <p class="eyebrow">Nos casamos</p>
+  <h1 class="names">
+    <span class="editable" data-field="novio">Levin Moisés Alvarez Reyes</span>
+    <span class="amp">&amp;</span>
+    <span class="editable" data-field="novia">Jinny Maria Romero Cabrera</span>
+  </h1>
+  <p class="date editable" data-field="fecha">Sábado 12 de diciembre de 2026</p>
+
+  <div class="cord" aria-hidden="true">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
+      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
+      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
+    </svg>
+  </div>
+
+  <button class="scroll-cue" onclick="document.getElementById('verse').scrollIntoView({behavior:'smooth'})">Desliza para ver los detalles ↓</button>
+</header>
+
+<div class="photo-full reveal">
+  <img src="imagenes/foto-beso.jpg" alt="Los novios besándose en un camino arbolado">
+</div>
+
+<section id="verse" class="verse reveal">
+  <div class="cord small" aria-hidden="true">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
+      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
+      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
+    </svg>
+  </div>
+  <blockquote>“Si uno está solo, lo pueden atacar; pero acompañado, podrá resistir. Y si el hilo es triple, no se corta fácilmente.”</blockquote>
+  <p class="citation">Eclesiastés 4:12</p>
+</section>
+
+<section class="details reveal">
+  <div class="detail-card">
+    <p class="detail-label">Ceremonia religiosa</p>
+    <p class="detail-time editable" data-field="hora_ceremonia">3:00 p.m.</p>
+    <p class="detail-place editable" data-field="lugar_ceremonia">Parroquia Cristo Sumo y Eterno Sacerdote</p>
+    <p class="detail-place-sub editable" data-field="colonia_ceremonia">Colonia Villa Olímpica</p>
+    <a class="map-btn" href="https://maps.app.goo.gl/kGqdthaJ8fjJ4bf96?g_st=aw" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+      Cómo llegar
+    </a>
+  </div>
+  <div class="detail-divider" aria-hidden="true"></div>
+  <div class="detail-card">
+    <p class="detail-label">Recepción</p>
+    <p class="detail-time editable" data-field="hora_recepcion">5:00 p.m.</p>
+    <p class="detail-place editable" data-field="lugar_recepcion">Villa Montecarlo</p>
+    <p class="detail-place-sub">&nbsp;</p>
+    <a class="map-btn" href="https://maps.app.goo.gl/6FjbwmhrANGBKvUV8?g_st=aw" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+      Cómo llegar
+    </a>
+  </div>
+</section>
+
+<section class="note reveal">
+  <p class="editable" data-field="itinerario">Añade aquí notas adicionales del itinerario (opcional).</p>
+</section>
+
+<div class="photo-pair reveal">
+  <div class="photo-card tilt-left">
+    <img src="imagenes/foto-abrazo.jpg" alt="Los novios abrazados formando un corazón con las manos">
+    <p class="cap">Un abrazo que ya es promesa</p>
+  </div>
+  <div class="photo-card tilt-right">
+    <img src="imagenes/foto-manos.jpg" alt="Manos entrelazadas mostrando el anillo de compromiso">
+    <p class="cap">Dos manos, un mismo camino</p>
+  </div>
+</div>
+
+<section class="dresscode reveal">
+  <p class="eyebrow">Código de vestimenta</p>
+  <h2 class="editable" data-field="dresscode_title">Elegante sport</h2>
+  <div class="dress-cards">
+    <div class="dress-card">
+      <p class="dress-label">Damas</p>
+      <p class="editable" data-field="damas">Vestido midi o largo, zapatos bajos y cómodos.</p>
+    </div>
+    <div class="dress-card">
+      <p class="dress-label">Ellos</p>
+      <p class="editable" data-field="ellos">Traje formal y tenis de vestir urbanos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="photo-full reveal">
+  <img src="imagenes/foto-corazon.jpg" alt="Los novios frente a una escultura de manos en forma de corazón, con la ciudad de fondo">
+</div>
+<p class="photo-caption reveal">Con el corazón en la mano, decimos que sí.</p>
+
+<section class="rsvp reveal" id="rsvp">
+  <p class="eyebrow">Confirma tu asistencia</p>
+  <p class="rsvp-sub">Nos encantaría contar contigo. Por favor confirma antes del <span class="editable" data-field="fecha_limite">1 de noviembre</span>.</p>
+
+  <div class="form-embed">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScLeTwcCSyppyVYo7cXpTXV51NfuNl6_1cieLDECd05mnTjpg/viewform?embedded=true" title="Formulario de confirmación de asistencia">Cargando…</iframe>
+  </div>
+</section>
+
+<section class="gift reveal">
+  <p class="eyebrow">Mesa de regalos</p>
+  <p class="gift-text">Valoramos profundamente su compañía en este día tan especial. Si gustan tener un detalle con nosotros, agradeceríamos que fuera en efectivo o transferencia para comenzar nuestro nuevo hogar.</p>
+  <div class="gift-card">
+    <p class="gift-name">Levin Moisés Álvarez Reyes - BAC</p>
+    <div class="gift-account">
+      <span class="gift-number">755697381</span>
+      <button class="gift-copy" type="button">Copiar</button>
+    </div>
+    <p class="gift-copied">Número copiado</p>
+  </div>
+  <div class="gift-card">
+    <p class="gift-name">Levin Moisés Álvarez Reyes - ATLANTIDA</p>
+    <div class="gift-account">
+      <span class="gift-number">14220074711</span>
+      <button class="gift-copy" type="button">Copiar</button>
+    </div>
+    <p class="gift-copied">Número copiado</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="cord small" aria-hidden="true">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
+      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
+      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
+    </svg>
+  </div>
+  <p class="footer-names">
+    <span class="editable" data-field="novio">Levin Moisés Alvarez Reyes</span> &amp; <span class="editable" data-field="novia">Nombre de la Novia</span>
+  
+  </p>
+  <p class="footer-date editable" data-field="fecha">Sábado 12 de diciembre de 2026</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, {threshold:0.25});
+  document.querySelectorAll('.cord').forEach(function(el){ io.observe(el); });
+
+  var io2 = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io2.observe(el); });
+
+  document.querySelectorAll('.gift-card').forEach(function(card){
+    var copyBtn = card.querySelector('.gift-copy');
+    var numberEl = card.querySelector('.gift-number');
+    var copiedMsg = card.querySelector('.gift-copied');
+    if (!copyBtn || !numberEl) return;
+    copyBtn.addEventListener('click', function(){
+      var number = numberEl.textContent.trim();
+      function showCopied(){
+        if (!copiedMsg) return;
+        copiedMsg.classList.add('show');
+        setTimeout(function(){ copiedMsg.classList.remove('show'); }, 2200);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(number).then(showCopied).catch(function(){
+          window.prompt('Copia el número de cuenta:', number);
+        });
+      } else {
+        window.prompt('Copia el número de cuenta:', number);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
