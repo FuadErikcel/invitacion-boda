@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmar asistencia | Levin &amp; Jinny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF7EF;
+    --ivory-deep:#F1E9D6;
+    --forest:#26352A;
+    --forest-mid:#5C6E4E;
+    --gold:#B08A3E;
+    --gold-light:#D8BE86;
+    --ink:#3A2E22;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--ivory-deep);color:var(--ink);
+    font-family:'EB Garamond',serif;-webkit-font-smoothing:antialiased;
+  }
+  .page{
+    width:min(100%,680px);min-height:100vh;margin:0 auto;
+    padding:2rem 1rem 1.5rem;background:var(--ivory);
+    box-shadow:0 0 60px rgba(38,53,42,.14);
+  }
+  .back-link{
+    display:inline-flex;align-items:center;gap:.45rem;
+    color:var(--forest-mid);font-size:1rem;text-decoration:none;
+    padding:.5rem 0;
+  }
+  .back-link:hover{text-decoration:underline;}
+  .back-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  header{text-align:center;padding:1.5rem 1rem 1.75rem;}
+  .eyebrow{
+    margin:0 0 .45rem;font-family:'Cormorant Garamond',serif;
+    font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:var(--forest-mid);
+  }
+  h1{
+    margin:0;font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,7vw,3rem);font-weight:500;color:var(--forest);
+  }
+  .form-frame{
+    border:1px solid var(--gold-light);background:var(--ivory-deep);
+    padding:.75rem;
+  }
+  iframe{width:100%;min-height:760px;border:0;display:block;background:#fff;}
+  .return-note{text-align:center;color:var(--forest-mid);font-size:.95rem;margin:1rem .5rem 0;}
+  @media (max-width:520px){
+    .page{padding:1rem .65rem;}
+    header{padding:1.15rem .75rem 1.4rem;}
+    iframe{min-height:820px;}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <a class="back-link" href="index.html#rsvp" aria-label="Volver a la invitación">&larr; Volver a la invitación</a>
+  <header>
+    <p class="eyebrow">Levin &amp; Jinny</p>
+    <h1>Confirma tu asistencia</h1>
+  </header>
+  <div class="form-frame">
+    <iframe id="rsvp-form" src="https://docs.google.com/forms/d/e/1FAIpQLScLeTwcCSyppyVYo7cXpTXV51NfuNl6_1cieLDECd05mnTjpg/viewform?embedded=true" title="Formulario de confirmación de asistencia">Cargando...</iframe>
+  </div>
+  <p class="return-note">Después de enviar tu respuesta, volverás a la invitación.</p>
+</main>
+<script>
+(function(){
+  var form = document.getElementById('rsvp-form');
+  var initialLoadComplete = false;
+
+  form.addEventListener('load', function(){
+    if (!initialLoadComplete) {
+      initialLoadComplete = true;
+      return;
+    }
+    window.setTimeout(function(){
+      window.location.replace('index.html#rsvp');
+    }, 900);
+  });
+})();
+</script>
+</body>
+</html>
