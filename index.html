@@ -371,6 +371,12 @@
     max-width:none;padding:5rem 3.5rem;display:grid;grid-template-columns:1fr 1px 1fr;
     gap:2.5rem;background:var(--ivory);align-items:center;
   }
+  .details-date{grid-column:1/-1;text-align:center;margin:0 0 .6rem;}
+  .details-date .eyebrow{margin-bottom:.45rem;}
+  .event-date{
+    margin:0;font-family:'Cormorant Garamond',serif;font-size:2.65rem;
+    line-height:1.08;font-weight:500;color:var(--forest);
+  }
   .detail-divider{width:1px;height:140px;background:var(--gold-light);}
   .detail-label{color:var(--forest-mid);font-size:1rem;font-weight:600;}
   .detail-time{color:var(--forest);font-size:2.15rem;}
@@ -428,6 +434,8 @@
     .verse{padding:4.5rem 1.6rem;}
     .verse blockquote{font-size:1.38rem;}
     .details{padding:4.25rem 1.75rem;display:flex;gap:2.3rem;}
+    .details-date{margin-bottom:.2rem;}
+    .event-date{font-size:2.15rem;max-width:310px;}
     .detail-divider{width:56px;height:1px;}
     .detail-time{font-size:1.9rem;}
     .photo-pair{padding:3.8rem 1.5rem;gap:.8rem;}
@@ -451,8 +459,6 @@
     <span class="amp">&amp;</span>
     <span class="editable" data-field="novia">Jinny Maria Romero Cabrera</span>
   </h1>
-  <p class="date editable" data-field="fecha">Sábado 12 de diciembre de 2026</p>
-
   <div class="cord" aria-hidden="true">
     <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
       <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
@@ -481,6 +487,10 @@
 </section>
 
 <section class="details reveal">
+  <div class="details-date">
+    <p class="eyebrow">Nuestra fecha</p>
+    <p class="event-date editable" data-field="fecha">Sábado 12 de diciembre de 2026</p>
+  </div>
   <div class="detail-card">
     <p class="detail-label">Ceremonia religiosa</p>
     <p class="detail-time editable" data-field="hora_ceremonia">3:00 p.m.</p>
