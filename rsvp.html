@@ -9,27 +9,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ivory:#FBF7EF;
-    --ivory-deep:#F1E9D6;
-    --forest:#26352A;
-    --forest-mid:#5C6E4E;
-    --gold:#B08A3E;
-    --gold-light:#D8BE86;
-    --ink:#3A2E22;
+    --ivory:#FFF9F2;
+    --ivory-deep:#F3E4E2;
+    --forest:#5B0A1B;
+    --forest-mid:#7B2638;
+    --gold:#B88B4A;
+    --gold-light:#DFC99F;
+    --ink:#2E171B;
+    --wine-dark:#28050D;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box;letter-spacing:0;}
   body{
-    margin:0;background:var(--ivory-deep);color:var(--ink);
+    margin:0;background:var(--wine-dark);color:var(--ink);
     font-family:'EB Garamond',serif;-webkit-font-smoothing:antialiased;
   }
   .page{
-    width:min(100%,680px);min-height:100vh;margin:0 auto;
+    width:min(100%,720px);min-height:100vh;margin:0 auto;
     padding:2rem 1rem 1.5rem;background:var(--ivory);
-    box-shadow:0 0 60px rgba(38,53,42,.14);
+    box-shadow:0 0 70px rgba(0,0,0,.32);
   }
   .back-link{
     display:inline-flex;align-items:center;gap:.45rem;
-    color:var(--forest-mid);font-size:1rem;text-decoration:none;
+    color:var(--forest);font-size:1rem;font-weight:600;text-decoration:none;
     padding:.5rem 0;
   }
   .back-link:hover{text-decoration:underline;}
@@ -37,14 +38,14 @@
   header{text-align:center;padding:1.5rem 1rem 1.75rem;}
   .eyebrow{
     margin:0 0 .45rem;font-family:'Cormorant Garamond',serif;
-    font-size:14px;letter-spacing:.32em;text-transform:uppercase;color:var(--forest-mid);
+    font-size:14px;text-transform:uppercase;color:var(--forest-mid);font-weight:600;
   }
   h1{
     margin:0;font-family:'Cormorant Garamond',serif;
     font-size:clamp(2rem,7vw,3rem);font-weight:500;color:var(--forest);
   }
   .form-frame{
-    border:1px solid var(--gold-light);background:var(--ivory-deep);
+    border:1px solid var(--gold-light);border-top:4px solid var(--forest);background:var(--ivory-deep);
     padding:.75rem;
   }
   iframe{width:100%;min-height:760px;border:0;display:block;background:#fff;}

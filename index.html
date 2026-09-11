@@ -311,6 +311,134 @@
     .cord path{stroke-dashoffset:0;}
     .reveal{opacity:1;transform:none;}
   }
+
+  /* Burgundy editorial theme */
+  :root{
+    --ivory:#FFF9F2;
+    --ivory-deep:#F3E4E2;
+    --forest:#5B0A1B;
+    --forest-mid:#7B2638;
+    --gold:#B88B4A;
+    --gold-light:#DFC99F;
+    --ink:#2E171B;
+    --wine-dark:#28050D;
+    --rose:#A65C69;
+    --max:660px;
+  }
+  *{letter-spacing:0;}
+  body{background:var(--wine-dark);}
+  .page{max-width:760px;background:var(--ivory);box-shadow:0 0 80px rgba(0,0,0,.32);}
+  .hero{
+    position:relative;isolation:isolate;min-height:88vh;
+    justify-content:flex-end;padding:5rem 2rem 4rem;
+    background:url('imagenes/foto-beso.jpg') center 46%/cover no-repeat;
+    border:0;color:var(--ivory);overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:rgba(31,2,9,.48);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:18px;z-index:-1;
+    border:1px solid rgba(255,249,242,.55);pointer-events:none;
+  }
+  .hero .eyebrow{color:var(--gold-light);font-size:.88rem;font-weight:600;}
+  .names{
+    color:var(--ivory);font-size:3.8rem;line-height:1.02;
+    text-shadow:0 3px 24px rgba(0,0,0,.45);max-width:620px;
+  }
+  .names .amp{color:var(--gold-light);font-size:.48em;margin:.18em 0;}
+  .date{color:var(--ivory);font-size:1.2rem;text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  .hero .cord{max-width:310px;margin:1.15rem auto .75rem;}
+  .hero .cord path.a{stroke:var(--gold-light);}
+  .hero .cord path.b{stroke:var(--ivory);}
+  .hero .cord path.c{stroke:var(--rose);}
+  .scroll-cue{color:var(--ivory);font-size:1rem;margin-top:.6rem;text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  .hero + .photo-full{display:none;}
+  .eyebrow{font-weight:600;color:var(--forest-mid);font-size:.88rem;}
+  .verse{position:relative;padding:5.5rem 3rem;background:var(--wine-dark);overflow:hidden;}
+  .verse::before,.verse::after{
+    content:"";position:absolute;width:130px;height:130px;border:1px solid rgba(223,201,159,.22);transform:rotate(45deg);
+  }
+  .verse::before{left:-86px;top:-65px;}
+  .verse::after{right:-86px;bottom:-65px;}
+  .verse blockquote{color:var(--ivory);font-size:1.65rem;max-width:580px;}
+  .verse .citation{color:var(--gold-light);font-size:.9rem;}
+  .verse .cord path.a{stroke:var(--gold-light);}
+  .verse .cord path.b{stroke:var(--rose);}
+  .verse .cord path.c{stroke:var(--ivory);}
+  .details{
+    max-width:none;padding:5rem 3.5rem;display:grid;grid-template-columns:1fr 1px 1fr;
+    gap:2.5rem;background:var(--ivory);align-items:center;
+  }
+  .detail-divider{width:1px;height:140px;background:var(--gold-light);}
+  .detail-label{color:var(--forest-mid);font-size:1rem;font-weight:600;}
+  .detail-time{color:var(--forest);font-size:2.15rem;}
+  .detail-place{font-size:1.12rem;}
+  .map-btn{
+    border-radius:0;border-color:var(--forest);color:var(--forest);
+    padding:.65rem 1rem;font-weight:600;
+  }
+  .map-btn:hover{background:var(--forest);color:var(--ivory);}
+  .note{max-width:none;padding:2.4rem 3rem;background:var(--ivory-deep);}
+  .note p{color:var(--forest);font-size:1.08rem;}
+  .photo-pair{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;
+    padding:4.5rem 3.5rem;background:var(--forest);
+  }
+  .photo-card{width:100%;max-width:none;padding:9px 9px 18px;border-color:rgba(223,201,159,.6);}
+  .photo-card.tilt-left,.photo-card.tilt-right{margin:0;align-self:auto;}
+  .photo-card.tilt-left{transform:rotate(-2deg) translateY(10px);}
+  .photo-card.tilt-right{transform:rotate(2deg) translateY(-10px);}
+  .photo-card .cap{color:var(--forest);font-size:.95rem;}
+  .dresscode{padding:5rem 3.5rem;background:var(--ivory-deep);}
+  .dresscode h2{color:var(--forest);font-size:2.5rem;margin:.35rem 0 2.5rem;}
+  .dress-cards{max-width:none;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+  .dress-card{border-top:3px solid var(--forest);padding:2rem 1.5rem;background:var(--ivory);}
+  .dress-label{color:var(--forest);font-weight:600;}
+  .photo-full{aspect-ratio:4/5;border:0;}
+  .photo-full img{filter:saturate(.86) contrast(1.04);}
+  .photo-caption{margin:0;padding:1.6rem 2rem 4rem;background:var(--forest);color:var(--ivory);font-size:1.15rem;}
+  .rsvp{max-width:none;margin:0;padding:5.5rem 2rem;background:var(--ivory);}
+  .rsvp-sub{max-width:520px;margin:0 auto 2rem;color:var(--ink);font-size:1.12rem;}
+  .rsvp-link{
+    min-height:52px;padding:.9rem 1.7rem;background:var(--forest);color:var(--ivory);
+    border:1px solid var(--forest);font-weight:600;
+  }
+  .rsvp-link:hover{background:var(--wine-dark);}
+  .gift{padding:5rem 3rem;background:var(--forest);}
+  .gift .eyebrow{color:var(--gold-light);}
+  .gift-text{color:var(--ivory);font-size:1.15rem;}
+  .gift-card{max-width:560px;border-color:rgba(223,201,159,.65);background:var(--ivory);padding:1.7rem;}
+  .gift-name{color:var(--forest);font-size:1.15rem;}
+  .gift-number{font-weight:600;color:var(--ink);}
+  .gift-copy{border-radius:0;border-color:var(--forest);color:var(--forest);}
+  .gift-copy:hover{background:var(--forest);color:var(--ivory);}
+  .footer{padding:4.5rem 2rem;background:var(--wine-dark);}
+  .footer-names{color:var(--ivory);font-size:1.8rem;}
+  .footer-date{color:var(--gold-light);}
+  .footer .cord path.a{stroke:var(--gold-light);}
+  .footer .cord path.b{stroke:var(--rose);}
+  .footer .cord path.c{stroke:var(--ivory);}
+  @media (max-width:600px){
+    .hero{min-height:86vh;padding:4rem 1.5rem 3.25rem;background-position:center 45%;}
+    .hero::after{inset:12px;}
+    .names{font-size:2.65rem;}
+    .date{font-size:1.05rem;}
+    .verse{padding:4.5rem 1.6rem;}
+    .verse blockquote{font-size:1.38rem;}
+    .details{padding:4.25rem 1.75rem;display:flex;gap:2.3rem;}
+    .detail-divider{width:56px;height:1px;}
+    .detail-time{font-size:1.9rem;}
+    .photo-pair{padding:3.8rem 1.5rem;gap:.8rem;}
+    .photo-card{padding:6px 6px 14px;}
+    .photo-card .cap{font-size:.8rem;}
+    .dresscode{padding:4.25rem 1.5rem;}
+    .dresscode h2{font-size:2rem;}
+    .dress-cards{grid-template-columns:1fr;}
+    .gift{padding:4.5rem 1.25rem;}
+    .gift-card{padding:1.5rem 1rem;}
+  }
 </style>
 </head>
 <body>
@@ -336,7 +464,7 @@
   <button class="scroll-cue" onclick="document.getElementById('verse').scrollIntoView({behavior:'smooth'})">Desliza para ver los detalles ↓</button>
 </header>
 
-<div class="photo-full reveal">
+<div class="photo-full reveal" aria-hidden="true">
   <img src="imagenes/foto-beso.jpg" alt="Los novios besándose en un camino arbolado">
 </div>
 
