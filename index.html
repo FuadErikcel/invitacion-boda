@@ -181,6 +181,12 @@
 
   .note{padding:0 1.75rem 3.5rem;max-width:560px;margin:0 auto;text-align:center;}
   .note p{font-size:1.02rem;color:var(--forest-mid);font-style:italic;margin:0;}
+  .itinerary{padding:2.5rem;background:var(--forest);}
+  .itinerary-image{
+    display:block;width:100%;height:auto;margin:0 auto;
+    border:1px solid rgba(223,201,159,.65);background:var(--ivory);
+    box-shadow:0 18px 42px rgba(0,0,0,.24);
+  }
 
   /* dresscode */
   .dresscode{padding:4rem 1.75rem 4.5rem;background:var(--ivory-deep);text-align:center;}
@@ -397,11 +403,12 @@
   .photo-card.tilt-left{transform:rotate(-2deg) translateY(10px);}
   .photo-card.tilt-right{transform:rotate(2deg) translateY(-10px);}
   .photo-card .cap{color:var(--forest);font-size:.95rem;}
-  .dresscode{padding:5rem 3.5rem;background:var(--ivory-deep);}
-  .dresscode h2{color:var(--forest);font-size:2.5rem;margin:.35rem 0 2.5rem;}
-  .dress-cards{max-width:none;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
-  .dress-card{border-top:3px solid var(--forest);padding:2rem 1.5rem;background:var(--ivory);}
-  .dress-label{color:var(--forest);font-weight:600;}
+  .dresscode{padding:2.5rem;background:var(--forest);}
+  .dresscode-image{
+    display:block;width:100%;height:auto;margin:0 auto;
+    border:1px solid rgba(223,201,159,.65);background:#fff;
+    box-shadow:0 18px 42px rgba(0,0,0,.24);
+  }
   .photo-full{aspect-ratio:4/5;border:0;}
   .photo-full img{filter:saturate(.86) contrast(1.04);}
   .photo-caption{margin:0;padding:1.6rem 2rem 4rem;background:var(--forest);color:var(--ivory);font-size:1.15rem;}
@@ -409,7 +416,7 @@
   .rsvp-sub{max-width:520px;margin:0 auto 2rem;color:var(--ink);font-size:1.12rem;}
   .rsvp-link{
     min-height:52px;padding:.9rem 1.7rem;background:var(--forest);color:var(--ivory);
-    border:1px solid var(--forest);font-weight:600;
+    border:1px solid var(--forest);font-weight:600;cursor:pointer;
   }
   .rsvp-link:hover{background:var(--wine-dark);}
   .gift{padding:5rem 3rem;background:var(--forest);}
@@ -426,6 +433,125 @@
   .footer .cord path.a{stroke:var(--gold-light);}
   .footer .cord path.b{stroke:var(--rose);}
   .footer .cord path.c{stroke:var(--ivory);}
+  .ornament-image{
+    display:block;width:100%;height:120px;object-fit:contain;object-position:center;
+    mix-blend-mode:screen;
+  }
+  .ornament-opening{
+    height:210px;display:flex;align-items:center;padding:0;
+    background:var(--wine-dark);overflow:hidden;
+  }
+  .ornament-opening .ornament-image{
+    width:100%;max-width:none;height:205px;margin:0 auto;
+  }
+  .footer .ornament-image{
+    width:100%;max-width:none;height:185px;
+    margin:0 auto 1rem;
+  }
+  body.music-locked{overflow:hidden;}
+  .invitation-gate{
+    position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:1.5rem;text-align:center;color:var(--ivory);
+    background:var(--wine-dark) url('imagenes/portada-collage.jpg') center/contain no-repeat;
+    transition:opacity .5s ease,visibility .5s ease;
+  }
+  .invitation-gate::before{content:"";position:absolute;inset:0;background:rgba(40,5,13,.38);}
+  .invitation-gate[hidden]{display:none;}
+  .invitation-gate.leaving{opacity:0;visibility:hidden;}
+  .gate-content{
+    position:relative;width:min(100%,560px);padding:3.25rem 2rem;
+    border:1px solid rgba(255,249,242,.72);background:rgba(40,5,13,.56);
+    box-shadow:0 18px 55px rgba(22,3,8,.28);backdrop-filter:blur(2px);
+  }
+  .gate-kicker{margin:0 0 .8rem;color:var(--gold-light);font-size:.9rem;text-transform:uppercase;}
+  .gate-names{
+    margin:0;font-family:'Cormorant Garamond',serif;font-size:3.25rem;
+    line-height:1.04;font-weight:500;text-shadow:0 3px 20px rgba(0,0,0,.4);
+  }
+  .gate-date{margin:1rem 0 2rem;color:var(--ivory);font-size:1.08rem;}
+  .gate-open{
+    min-height:52px;display:inline-flex;align-items:center;gap:.75rem;
+    padding:.8rem 1.35rem;border:1px solid var(--gold-light);
+    background:var(--forest);color:var(--ivory);cursor:pointer;
+    font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;
+  }
+  .gate-open:hover{background:var(--wine-dark);}
+  .gate-song{text-align:left;line-height:1.05;}
+  .gate-song-title{display:block;font-size:1.08rem;}
+  .gate-song-artist{
+    display:block;margin-top:.22rem;color:var(--gold-light);
+    font-family:'EB Garamond',serif;font-size:.78rem;font-weight:400;
+  }
+  .gate-open:focus-visible,.audio-toggle:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}
+  .gate-play{font-size:.76rem;color:var(--gold-light);}
+  .audio-toggle{
+    position:fixed;right:16px;bottom:16px;z-index:30;width:48px;height:48px;
+    display:none;align-items:center;justify-content:center;border-radius:50%;
+    border:1px solid var(--gold-light);background:var(--forest);color:var(--ivory);
+    box-shadow:0 8px 24px rgba(40,5,13,.32);cursor:pointer;font-size:1rem;
+  }
+  .audio-toggle.visible{display:flex;}
+  .audio-toggle:hover{background:var(--wine-dark);}
+  body.form-open{overflow:hidden;}
+  .form-modal{
+    position:fixed;inset:0;z-index:80;overflow:auto;
+    background:var(--wine-dark);overscroll-behavior:contain;
+  }
+  .form-modal[hidden]{display:none;}
+  .form-modal-page{
+    width:min(100%,760px);min-height:100vh;margin:0 auto;padding:1.25rem;
+    background:var(--ivory);box-shadow:0 0 70px rgba(0,0,0,.32);
+  }
+  .form-modal-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .form-modal-back{
+    display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 0;
+    border:0;background:transparent;color:var(--forest);cursor:pointer;
+    font-family:'EB Garamond',serif;font-size:1rem;font-weight:600;
+  }
+  .form-modal-back:hover{text-decoration:underline;}
+  .form-modal-back:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .form-modal-heading{text-align:center;padding:1.5rem 1rem 1.8rem;}
+  .form-modal-heading .eyebrow{margin-bottom:.35rem;}
+  .form-modal-title{
+    margin:0;font-family:'Cormorant Garamond',serif;font-size:2.8rem;
+    line-height:1.08;font-weight:500;color:var(--forest);
+  }
+  .form-modal-frame{
+    max-width:600px;margin:0 auto;padding:2rem;
+    border:1px solid var(--gold-light);border-top:4px solid var(--forest);
+    background:var(--ivory-deep);
+  }
+  .custom-rsvp{display:flex;flex-direction:column;gap:1.4rem;text-align:left;}
+  .custom-rsvp label,.custom-rsvp legend{
+    font-family:'Cormorant Garamond',serif;font-size:1.08rem;
+    font-weight:600;color:var(--forest);
+  }
+  .custom-rsvp label{display:flex;flex-direction:column;gap:.45rem;}
+  .custom-rsvp input[type="text"],.custom-rsvp input[type="number"],.custom-rsvp textarea{
+    width:100%;padding:.8rem .85rem;border:1px solid var(--gold-light);
+    border-radius:0;background:var(--ivory);color:var(--ink);
+    font-family:'EB Garamond',serif;font-size:1.05rem;
+  }
+  .custom-rsvp textarea{min-height:120px;resize:vertical;}
+  .custom-rsvp input:focus-visible,.custom-rsvp textarea:focus-visible,.custom-rsvp button:focus-visible{
+    outline:2px solid var(--gold);outline-offset:2px;
+  }
+  .attendance-options{margin:0;padding:1.2rem;border:1px solid var(--gold-light);}
+  .attendance-options legend{padding:0 .35rem;}
+  .attendance-choice{
+    display:flex!important;flex-direction:row!important;align-items:center;
+    gap:.65rem!important;margin:.55rem 0;color:var(--ink)!important;font-family:'EB Garamond',serif!important;
+  }
+  .attendance-choice input{width:18px;height:18px;accent-color:var(--forest);}
+  .custom-rsvp-submit{
+    min-height:50px;border:1px solid var(--forest);background:var(--forest);
+    color:var(--ivory);cursor:pointer;font-family:'Cormorant Garamond',serif;
+    font-size:1.05rem;font-weight:600;text-transform:uppercase;
+  }
+  .custom-rsvp-submit:hover{background:var(--wine-dark);}
+  .custom-rsvp-submit:disabled{opacity:.65;cursor:wait;}
+  .form-status{min-height:1.2em;margin:0;text-align:center;color:var(--forest-mid);font-size:.95rem;}
+  .form-modal-note{text-align:center;margin:1rem .5rem;color:var(--forest-mid);font-size:.95rem;}
   @media (max-width:600px){
     .hero{min-height:86vh;padding:4rem 1.5rem 3.25rem;background-position:center 45%;}
     .hero::after{inset:12px;}
@@ -438,18 +564,46 @@
     .event-date{font-size:2.15rem;max-width:310px;}
     .detail-divider{width:56px;height:1px;}
     .detail-time{font-size:1.9rem;}
+    .itinerary{padding:.75rem;}
     .photo-pair{padding:3.8rem 1.5rem;gap:.8rem;}
     .photo-card{padding:6px 6px 14px;}
     .photo-card .cap{font-size:.8rem;}
-    .dresscode{padding:4.25rem 1.5rem;}
-    .dresscode h2{font-size:2rem;}
-    .dress-cards{grid-template-columns:1fr;}
+    .dresscode{padding:.75rem;}
     .gift{padding:4.5rem 1.25rem;}
     .gift-card{padding:1.5rem 1rem;}
+    .invitation-gate{background-size:auto 100%;}
+    .audio-toggle{right:12px;bottom:12px;}
+    .ornament-opening{height:145px;}
+    .ornament-opening .ornament-image{height:138px;}
+    .footer .ornament-image{
+      width:100%;height:135px;margin:0 auto .7rem;
+    }
+    .gate-content{padding:1.7rem 1rem;}
+    .gate-names{font-size:2.55rem;}
+    .gate-date{margin:.75rem 0 1.2rem;}
+    .form-modal-page{padding:.75rem .6rem;}
+    .form-modal-heading{padding:1rem .75rem 1.35rem;}
+    .form-modal-title{font-size:2.25rem;}
+    .form-modal-frame{padding:1.3rem .9rem;}
   }
 </style>
 </head>
-<body>
+<body class="music-locked">
+<div class="invitation-gate" id="invitation-gate">
+  <div class="gate-content">
+    <p class="gate-kicker">Nos casamos</p>
+    <h1 class="gate-names">Levin &amp; Jinny</h1>
+    <p class="gate-date">Sábado 12 de diciembre de 2026</p>
+    <button class="gate-open" id="gate-open" type="button">
+      <span class="gate-play" aria-hidden="true">&#9654;</span>
+      <span class="gate-song">
+        <span class="gate-song-title">Perfect</span>
+        <span class="gate-song-artist">Ed Sheeran · Abrir invitación</span>
+      </span>
+    </button>
+  </div>
+</div>
+
 <div class="page">
 
 <header class="hero">
@@ -459,14 +613,6 @@
     <span class="amp">&amp;</span>
     <span class="editable" data-field="novia">Jinny Maria Romero Cabrera</span>
   </h1>
-  <div class="cord" aria-hidden="true">
-    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
-      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
-      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
-      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
-    </svg>
-  </div>
-
   <button class="scroll-cue" onclick="document.getElementById('verse').scrollIntoView({behavior:'smooth'})">Desliza para ver los detalles ↓</button>
 </header>
 
@@ -474,14 +620,11 @@
   <img src="imagenes/foto-beso.jpg" alt="Los novios besándose en un camino arbolado">
 </div>
 
+<div class="ornament-opening reveal" aria-hidden="true">
+  <img class="ornament-image" src="imagenes/separador-mariposa.jpg" alt="">
+</div>
+
 <section id="verse" class="verse reveal">
-  <div class="cord small" aria-hidden="true">
-    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
-      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
-      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
-      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
-    </svg>
-  </div>
   <blockquote>“Si uno está solo, lo pueden atacar; pero acompañado, podrá resistir. Y si el hilo es triple, no se corta fácilmente.”</blockquote>
   <p class="citation">Eclesiastés 4:12</p>
 </section>
@@ -504,7 +647,7 @@
   <div class="detail-divider" aria-hidden="true"></div>
   <div class="detail-card">
     <p class="detail-label">Recepción</p>
-    <p class="detail-time editable" data-field="hora_recepcion">5:00 p.m.</p>
+    <p class="detail-time editable" data-field="hora_recepcion">5:30 p.m.</p>
     <p class="detail-place editable" data-field="lugar_recepcion">Villa Montecarlo</p>
     <p class="detail-place-sub">&nbsp;</p>
     <a class="map-btn" href="https://maps.app.goo.gl/6FjbwmhrANGBKvUV8?g_st=aw" target="_blank" rel="noopener">
@@ -514,8 +657,8 @@
   </div>
 </section>
 
-<section class="note reveal">
-  <p class="editable" data-field="itinerario">Añade aquí notas adicionales del itinerario (opcional).</p>
+<section class="itinerary reveal" aria-label="Itinerario de la boda">
+  <img class="itinerary-image" src="imagenes/itinerario-boda.png" alt="Itinerario de la boda: ceremonia religiosa en la Parroquia Cristo Sumo y Eterno Sacerdote a las 3:00 p.m.; recepción en Villa Montecarlo a las 5:30 p.m.; entrada de los esposos a las 6:00 p.m.; cena y pastel a las 7:00 p.m.; fiesta neón y baile de 8:00 a 10:30 p.m.; despedida a las 10:50 p.m." loading="lazy">
 </section>
 
 <div class="photo-pair reveal">
@@ -530,18 +673,7 @@
 </div>
 
 <section class="dresscode reveal">
-  <p class="eyebrow">Código de vestimenta</p>
-  <h2 class="editable" data-field="dresscode_title">Elegante sport</h2>
-  <div class="dress-cards">
-    <div class="dress-card">
-      <p class="dress-label">Damas</p>
-      <p class="editable" data-field="damas">Vestido midi o largo, zapatos bajos y cómodos.</p>
-    </div>
-    <div class="dress-card">
-      <p class="dress-label">Ellos</p>
-      <p class="editable" data-field="ellos">Traje formal y tenis de vestir urbanos.</p>
-    </div>
-  </div>
+  <img class="dresscode-image" src="imagenes/codigo-vestimenta.jpg" alt="Código de vestimenta elegante sport para hombres y mujeres, con paleta de colores sugerida" loading="lazy">
 </section>
 
 <div class="photo-full reveal">
@@ -552,12 +684,12 @@
 <section class="rsvp reveal" id="rsvp">
   <p class="eyebrow">Confirma tu asistencia</p>
   <p class="rsvp-sub">Nos encantaría contar contigo. Por favor confirma antes del <span class="editable" data-field="fecha_limite">1 de noviembre</span>.</p>
-  <a class="rsvp-link" href="rsvp.html">Confirmar asistencia</a>
+  <button class="rsvp-link" id="open-rsvp" type="button">Confirmar asistencia</button>
 </section>
 
 <section class="gift reveal">
   <p class="eyebrow">Mesa de regalos</p>
-  <p class="gift-text">Valoramos profundamente su compañía en este día tan especial. Si gustan tener un detalle con nosotros, agradeceríamos que fuera en efectivo o transferencia para comenzar nuestro nuevo hogar.</p>
+  <p class="gift-text">Tu compañía en este día tan especial es nuestro mejor regalo. Si deseas tener un detalle con nosotros, agradeceremos con mucho cariño tu obsequio en efectivo o mediante transferencia.</p>
   <div class="gift-card">
     <p class="gift-name">Levin Moisés Álvarez Reyes - BAC</p>
     <div class="gift-account">
@@ -577,13 +709,7 @@
 </section>
 
 <footer class="footer">
-  <div class="cord small" aria-hidden="true">
-    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
-      <path class="a" d="M0,20 C25,0 75,40 100,20 C125,0 175,40 200,20 C225,0 275,40 300,20 C325,0 375,40 400,20 C425,0 475,40 500,20 C525,0 575,40 600,20"/>
-      <path class="b" d="M0,20 C25,40 75,0 100,20 C125,40 175,0 200,20 C225,40 275,0 300,20 C325,40 375,0 400,20 C425,40 475,0 500,20 C525,40 575,0 600,20"/>
-      <path class="c" d="M0,20 C37,8 113,32 150,20 C187,8 263,32 300,20 C337,8 413,32 450,20 C487,8 563,32 600,20"/>
-    </svg>
-  </div>
+  <img class="ornament-image" src="imagenes/separador-mariposa.jpg" alt="" aria-hidden="true" loading="lazy">
   <p class="footer-names">
     <span class="editable" data-field="novio">Levin Moisés Alvarez Reyes</span> &amp; <span class="editable" data-field="novia">Jinny Maria Romero Cabrera</span>
   
@@ -591,6 +717,47 @@
   <p class="footer-date editable" data-field="fecha">Sábado 12 de diciembre de 2026</p>
 </footer>
 
+</div>
+
+<audio id="background-music" preload="metadata" playsinline>
+  <source src="audio/perfect.mp3" type="audio/mpeg">
+</audio>
+<button class="audio-toggle" id="audio-toggle" type="button" aria-label="Pausar música" title="Pausar música">&#10074;&#10074;</button>
+
+<div class="form-modal" id="form-modal" role="dialog" aria-modal="true" aria-labelledby="form-modal-title" hidden>
+  <div class="form-modal-page">
+    <div class="form-modal-bar">
+      <button class="form-modal-back" id="close-rsvp" type="button">&larr; Volver a la invitación</button>
+    </div>
+    <header class="form-modal-heading">
+      <p class="eyebrow">Levin &amp; Jinny</p>
+      <h2 class="form-modal-title" id="form-modal-title">Confirma tu asistencia</h2>
+    </header>
+    <div class="form-modal-frame">
+      <form class="custom-rsvp" id="custom-rsvp" action="https://docs.google.com/forms/d/e/1FAIpQLSe9HovwXwwz-x0wtF-n77G4-DGG87297lPQN3VWLpp6PhQM9g/formResponse" method="post" target="rsvp-submit-target">
+        <label>
+          Nombre completo
+          <input type="text" name="entry.1076826290" autocomplete="name" required>
+        </label>
+        <fieldset class="attendance-options">
+          <legend>¿Asistirás?</legend>
+          <label class="attendance-choice"><input type="radio" name="entry.1714364255" value="Sí, si asistiré" required> Sí, sí asistiré</label>
+          <label class="attendance-choice"><input type="radio" name="entry.1714364255" value="Lo siento, no podré asistir" required> Lo siento, no podré asistir</label>
+        </fieldset>
+        <label>
+          Cantidad de personas que asistirán
+          <input type="number" id="guest-count" name="entry.107104448" min="0" max="4" step="1" inputmode="numeric" placeholder="Ejemplo: 2" required>
+          <span id="guest-count-hint">Por favor, respeta el número de cupos asignados en tu invitación.</span>
+        </label>
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="pageHistory" value="0">
+        <button class="custom-rsvp-submit" type="submit">Enviar confirmación</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <iframe name="rsvp-submit-target" id="rsvp-submit-target" title="Destino de envío del formulario" hidden></iframe>
+    </div>
+    <p class="form-modal-note">Después de enviar tu respuesta, volverás al inicio de la invitación.</p>
+  </div>
 </div>
 
 <script>
@@ -630,6 +797,134 @@
       }
     });
   });
+
+  var gate = document.getElementById('invitation-gate');
+  var gateOpen = document.getElementById('gate-open');
+  var audio = document.getElementById('background-music');
+  var audioToggle = document.getElementById('audio-toggle');
+  var songStartTime = 21;
+  var songHasStarted = false;
+
+  function updateAudioButton(){
+    var isPlaying = !audio.paused;
+    audioToggle.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+    audioToggle.setAttribute('aria-label', isPlaying ? 'Pausar música' : 'Reproducir música');
+    audioToggle.title = isPlaying ? 'Pausar música' : 'Reproducir música';
+  }
+
+  gateOpen.addEventListener('click', function(){
+    window.scrollTo(0,0);
+    audio.volume = 0.72;
+    if (!songHasStarted) {
+      songHasStarted = true;
+      if (audio.readyState >= 1) {
+        audio.currentTime = songStartTime;
+      } else {
+        audio.addEventListener('loadedmetadata', function(){
+          audio.currentTime = songStartTime;
+        }, {once:true});
+      }
+    }
+    audio.play().catch(function(){}).finally(updateAudioButton);
+    gate.classList.add('leaving');
+    document.body.classList.remove('music-locked');
+    audioToggle.classList.add('visible');
+    window.setTimeout(function(){ gate.hidden = true; }, 520);
+  });
+
+  audioToggle.addEventListener('click', function(){
+    if (audio.paused) audio.play().catch(function(){});
+    else audio.pause();
+    window.setTimeout(updateAudioButton, 0);
+  });
+  audio.addEventListener('play', updateAudioButton);
+  audio.addEventListener('pause', updateAudioButton);
+  audio.addEventListener('ended', function(){
+    audio.currentTime = songStartTime;
+    audio.play().catch(function(){});
+  });
+
+  var openRsvp = document.getElementById('open-rsvp');
+  var closeRsvp = document.getElementById('close-rsvp');
+  var formModal = document.getElementById('form-modal');
+  var customRsvp = document.getElementById('custom-rsvp');
+  var submitTarget = document.getElementById('rsvp-submit-target');
+  var formStatus = document.getElementById('form-status');
+  var formSubmitting = false;
+  var attendanceInputs = customRsvp.querySelectorAll('input[name="entry.1714364255"]');
+  var guestCountInput = document.getElementById('guest-count');
+  var guestCountHint = document.getElementById('guest-count-hint');
+  var guestNameInput = customRsvp.querySelector('input[name="entry.1076826290"]');
+  var inviteParams = new URLSearchParams(window.location.search);
+  var assignedCupos = parseInt(inviteParams.get('cupos'),10);
+  var invitedName = (inviteParams.get('para') || '').trim().slice(0,100);
+  var hasAssignedCupos = Number.isFinite(assignedCupos) && assignedCupos >= 1;
+  if (!hasAssignedCupos) assignedCupos = 4;
+  assignedCupos = Math.min(assignedCupos,4);
+  guestCountInput.max = String(assignedCupos);
+  guestCountInput.placeholder = 'Máximo: ' + assignedCupos;
+  guestCountHint.textContent = hasAssignedCupos
+    ? (assignedCupos === 1
+      ? 'Tienes 1 cupo asignado en tu invitación.'
+      : 'Tienes ' + assignedCupos + ' cupos asignados en tu invitación.')
+    : 'Máximo general permitido: 4 personas.';
+  if (invitedName) guestNameInput.value = invitedName;
+
+  function updateGuestCount(){
+    var attendance = customRsvp.querySelector('input[name="entry.1714364255"]:checked');
+    var willAttend = attendance && attendance.value === 'Sí, si asistiré';
+    if (!attendance) return;
+    guestCountInput.readOnly = !willAttend;
+    guestCountInput.min = willAttend ? '1' : '0';
+    if (willAttend && Number(guestCountInput.value) < 1) guestCountInput.value = '';
+    if (!willAttend) guestCountInput.value = '0';
+  }
+
+  attendanceInputs.forEach(function(input){
+    input.addEventListener('change', updateGuestCount);
+  });
+  guestCountInput.addEventListener('input', function(){
+    var digitsOnly = this.value.replace(/\D/g,'');
+    if (digitsOnly === '') {
+      this.value = '';
+      return;
+    }
+    this.value = String(Math.min(Number(digitsOnly),assignedCupos));
+  });
+
+  function showRsvpForm(){
+    formModal.hidden = false;
+    document.body.classList.add('form-open');
+    formModal.scrollTop = 0;
+    closeRsvp.focus();
+  }
+
+  function returnToInvitation(){
+    formModal.hidden = true;
+    document.body.classList.remove('form-open');
+    window.scrollTo(0,0);
+  }
+
+  openRsvp.addEventListener('click', showRsvpForm);
+  closeRsvp.addEventListener('click', returnToInvitation);
+  customRsvp.addEventListener('submit', function(){
+    updateGuestCount();
+    formSubmitting = true;
+    formStatus.textContent = 'Enviando tu confirmación...';
+    customRsvp.querySelector('button[type="submit"]').disabled = true;
+  });
+  submitTarget.addEventListener('load', function(){
+    if (!formSubmitting) return;
+    formSubmitting = false;
+    formStatus.textContent = 'Confirmación enviada. ¡Gracias!';
+    customRsvp.reset();
+    guestCountInput.readOnly = false;
+    guestCountInput.min = '0';
+    if (invitedName) guestNameInput.value = invitedName;
+    customRsvp.querySelector('button[type="submit"]').disabled = false;
+    window.setTimeout(returnToInvitation, 900);
+  });
+
 })();
 </script>
 
